@@ -342,38 +342,27 @@
           <h2 class="section-title">Hubungi Saya</h2>
           <div class="contact-content">
             <div class="contact-form">
-              <form id="contactForm">
+              <form id="contactForm" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                
                 <div class="form-group">
                   <label for="name">Nama</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Nama Anda"
-                    required
-                  />
+                  <input type="text" id="name" name="name" placeholder="Nama Anda" required>
                 </div>
+                
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="email@example.com"
-                    required
-                  />
+                  <input type="email" id="email" name="email" placeholder="email@example.com" required>
                 </div>
+                
                 <div class="form-group">
                   <label for="message">Pesan</label>
-                  <textarea
-                    id="message"
-                    rows="5"
-                    placeholder="Tulis pesan Anda di sini..."
-                    required
-                  ></textarea>
+                  <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary btn-full">
-                  Kirim Pesan
-                </button>
+                
+                <button type="submit" class="btn btn-primary btn-full">Kirim Pesan</button>
               </form>
+
             </div>
             <div class="contact-info">
               <div class="contact-card">
@@ -449,6 +438,7 @@
     <script src="script.js"></script>
   </body>
 </html>
+
 
 
 
