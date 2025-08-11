@@ -56,32 +56,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Form submission
-  document.addEventListener("DOMContentLoaded", function () {
-    const contactForm = document.getElementById("contactForm");
+  const contactForm = document.getElementById("contactForm");
   
-    contactForm.addEventListener("submit", function (e) {
-      e.preventDefault();
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
   
-      const formData = new FormData(contactForm);
+    const formData = new FormData(contactForm);
   
-      fetch("https://formsubmit.co/andretri376@gmail.com", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          alert("Pesan Anda telah terkirim! Terima kasih.");
-          contactForm.reset();
-        } else {
-          alert("Terjadi kesalahan, silakan coba lagi.");
-        }
-      })
-      .catch(error => {
-        alert("Gagal mengirim pesan. Periksa koneksi internet Anda.");
-      });
+    fetch("https://formsubmit.co/andretri376@gmail.com", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Pesan Anda telah terkirim! Terima kasih.");
+        contactForm.reset();
+      } else {
+        alert("Terjadi kesalahan, silakan coba lagi.");
+      }
+    })
+    .catch(error => {
+      alert("Gagal mengirim pesan. Periksa koneksi internet Anda.");
     });
   });
-
 
   // Add animation classes to elements when they come into view
   const animateOnScroll = function () {
@@ -158,5 +155,6 @@ function typeWriter(element, text, speed = 100) {
 //         typeWriter(typingElement, originalText);
 //     }
 // });
+
 
 
