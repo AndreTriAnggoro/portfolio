@@ -103,22 +103,24 @@ document.addEventListener("DOMContentLoaded", function () {
   // Skill bar animation
   const animateSkillBars = function () {
     const skillBars = document.querySelectorAll(".skill-progress");
-
+  
     skillBars.forEach((bar) => {
       const barPosition = bar.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
-
-      if (barPosition < windowHeight - 50) {
-        const width = bar.style.width;
-        bar.style.width = "0";
-
+  
+      // Cek kalau bar sudah pernah dianimasikan, jangan reset lagi
+      if (barPosition < windowHeight - 50 && !bar.classList.contains("animated")) {
+        const finalWidth = bar.getAttribute("data-width") || bar.style.width;
+        bar.style.width = "0"; // mulai dari 0 untuk animasi
         setTimeout(() => {
           bar.style.transition = "width 1s ease-in-out";
-          bar.style.width = width;
+          bar.style.width = finalWidth;
+          bar.classList.add("animated"); // tandai sudah animasi
         }, 200);
       }
     });
   };
+
 
   // Run skill bar animation on scroll
   window.addEventListener("scroll", animateSkillBars);
@@ -151,3 +153,4 @@ function typeWriter(element, text, speed = 100) {
 //         typeWriter(typingElement, originalText);
 //     }
 // });
+
