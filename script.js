@@ -56,27 +56,32 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Form submission
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
+  document.addEventListener("DOMContentLoaded", function () {
+    const contactForm = document.getElementById("contactForm");
+  
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
-
-      // Get form values
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-
-      // Here you would typically send the form data to a server
-      // For this example, we'll just log it to the console
-      console.log("Form submitted:", { name, email, message });
-
-      // Show success message (you can customize this)
-      alert("Pesan Anda telah terkirim! Terima kasih.");
-
-      // Reset form
-      contactForm.reset();
+  
+      const formData = new FormData(contactForm);
+  
+      fetch("https://formsubmit.co/andretri376@gmail.com", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Pesan Anda telah terkirim! Terima kasih.");
+          contactForm.reset();
+        } else {
+          alert("Terjadi kesalahan, silakan coba lagi.");
+        }
+      })
+      .catch(error => {
+        alert("Gagal mengirim pesan. Periksa koneksi internet Anda.");
+      });
     });
-  }
+  });
+
 
   // Add animation classes to elements when they come into view
   const animateOnScroll = function () {
@@ -153,4 +158,5 @@ function typeWriter(element, text, speed = 100) {
 //         typeWriter(typingElement, originalText);
 //     }
 // });
+
 
